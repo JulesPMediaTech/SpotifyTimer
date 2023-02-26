@@ -44,10 +44,6 @@ class MainWindow(Tk):
         # print(f"{self.hour_field.text} : {self.min_field.text} : {self.sec_field.text}")
         
         
-    def splash(self):
-        self.sp = Splash(self) # instance needs to be created using self to avoid 'garbage collection' and the image being removed
-        
-        
     def start_timer(self):
         zero_count = 0
         for fl in self.field_list: 
@@ -91,9 +87,14 @@ class MainWindow(Tk):
         for cl in (self.colon1,self.colon2): cl.set_bg('normal')
         
         
+    def splash(self):
+        self.sp = Splash(self) # instance needs to be created using self to avoid 'garbage collection' and the image being removed
+        # self.update()        
+        
     def hit_return(self,event):  # When return
         if not self.isrunning:
             for fl in self.field_list: fl.correct_digit_format()
+            self.startButton.b.configure(state='normal')
  
     
     def open_app(self):

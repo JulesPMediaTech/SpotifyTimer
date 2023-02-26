@@ -4,8 +4,8 @@ from tkmacosx import Button
 import os
 
 
-
 global path
+
 
 class Splash:
     def __init__ (self, master):
@@ -22,7 +22,7 @@ Software written by Jules Pyke
 LDAP: @julesp
 info@golively.tv
 © Jules Pyke 2023 
-under MITS licence
+under MIT licence
 
 Always up for more coding projects,
 so just HOLLER!

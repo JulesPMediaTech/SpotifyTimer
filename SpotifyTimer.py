@@ -4,7 +4,7 @@ from tkmacosx import Button
 from time import sleep
 from sys import stdout
 import threading
-import kill_Spotify
+import Spotify_events
 from splash import Splash
 
 
@@ -53,7 +53,7 @@ class MainWindow(Tk):
         if zero_count == 3:
             # print("TIMER IS AT ZERO")
             self.isrunning = False
-        elif not (kill_Spotify.is_spotify_running()):
+        elif not (Spotify_events.is_spotify_running()):
             # print("Spotify NOT running")
             self.no_spotify_warning = Popup(self,"Spotify is not running!")
             self.no_spotify_warning.popup.geometry('300x150')
@@ -88,6 +88,7 @@ class MainWindow(Tk):
         
         
     def splash(self):
+        sleep (0.1)
         self.sp = Splash(self) # instance needs to be created using self to avoid 'garbage collection' and the image being removed
         # self.update()        
         
@@ -100,7 +101,7 @@ class MainWindow(Tk):
     def open_app(self):
         # self.no_spotify_warning.button.configure(state='normal')
         # self.no_spotify_warning.button2.configure(state='active')
-        kill_Spotify.open_spotify()
+        Spotify_events.open_spotify()
         sleep(1)
         self.no_spotify_warning.popup.destroy()
  
@@ -129,7 +130,7 @@ class MainWindow(Tk):
             print("Paused")
         else:
             print("Time's up")
-            kill_Spotify.fade_down_Spotify()
+            Spotify_events.fade_down_Spotify()
             self.stop_timer()
 
         
@@ -231,16 +232,9 @@ class Popup:
         self.warnlab = Label(self.popup,text=msg).pack(padx=20,pady=20)
         self.button = Button(self.popup,text=okbut,state='active',command=self.popup.destroy)
         self.popup.bind('<Return>', (lambda e, b=self.button: b.invoke()))
-        # self.popup.bind_all('<Key>', self.beep)
         self.button.pack(padx=20,pady=5)
         
         
-    # def beep(self,event):
-    #     print('Key pressed')
-    #     stdout.write('\a')
-    #     stdout.flush()
-
-
 if __name__ == "__main__":     
     root = MainWindow()
     root.mainloop()

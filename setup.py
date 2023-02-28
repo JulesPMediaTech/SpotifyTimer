@@ -10,7 +10,7 @@ from setuptools import setup
 
 
 APP = ['SpotifyTimer.py']
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 DATA_FILES = ['logo.png']
 OPTIONS = {"iconfile" : "SpotifyTimer_icon.icns", # path to the icon for the Application
            "plist" : {"NSHumanReadableCopyright" : "© 2023 Jules Pyke"} # copyright seen in MacOS 'Get Info' menu

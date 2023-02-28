@@ -42,6 +42,7 @@ tell application "Spotify"
 		delay 0.15
 	end repeat
 	pause
+    delay 0.1
 	set sound volume to initalVolume
 end tell
           ''')
